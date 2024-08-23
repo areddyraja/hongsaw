@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ADD8E6; /* Light blue background */
+}
+
+.app {
+  text-align: center;
+}
+
+.app-header {
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header h1 {
+  margin: 0 20px 0 0; /* Add some margin to the right */
+}
+
+.app-header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.app-header nav ul li {
+  margin-right: 20px;
+}
+
+.app-header nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  border-bottom: 2px solid transparent;
+}
+
+.app-header nav a:hover {
+  border-bottom: 2px solid #fff;
+}
+
+.app-header nav a.active {
+  border-bottom: 2px solid #fff;
+}
+
+h1 {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+.table-header {
+  display: flex;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-bottom: 2px solid #fff;
+}
+
+.table-header-cell {
+  flex: 1;
+  padding: 10px;
+  text-align: left;
+  border-right: 1px solid #fff;
+}
+
+.table-header-cell:last-child {
+  border-right: none;
+}
+
+.table-row {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-cell {
+  flex: 1;
+  padding: 10px;
+  text-align: left;
+  border-right: 1px solid #ddd;
+}
+
+.table-cell:last-child {
+  border-right: none;
+}
+
+
+main {
+  padding: 2em;
+}
+
+
+.action-button {
+  margin: 5px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #ddd;
+}
