@@ -1,6 +1,8 @@
-
 import React from 'react';
 import Table from 'react-bootstrap/Table';
+import  { useState, useEffect } from 'react';
+import NewWorkflow from './NewWorkflow';
+
 
 const workflowsData = [
   {
@@ -62,9 +64,25 @@ const businessRules = [
 
 
 function Workflows() {
+
+  const [workflows, setWorkflows] = useState([]);
+  const [showNewWorkflow, setShowNewWorkflow] = useState(false);
+
+  const handleNewWorkflow = () => {
+    setShowNewWorkflow(true);
+  };
+
+  if (showNewWorkflow) {
+    return <NewWorkflow />;
+  }
+
   return (
     <div>
       <h1>Workflows</h1>
+      <button onClick={handleNewWorkflow}>New Workflow</button>
+
+
+
 
       <Table bordered hover >
         <thead>

@@ -10,6 +10,9 @@ import Runtime from './Runtime';
 import Admin from './Admin';
 import About from './About';
 import Help from './Help';
+import NewWorkflow from './NewWorkflow';
+
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -47,6 +50,8 @@ function App() {
             <Route path="/admin" element={<Admin />} />
             <Route path="/about" element={<About />} />
             <Route path="/help" element={<Help />} />
+            <Route path="/new-workflow" element={<NewWorkflow />} />
+
           </Routes>
         </main>
       </div>
