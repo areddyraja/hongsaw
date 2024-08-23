@@ -1,4 +1,5 @@
 import React from 'react';
+import Table from 'react-bootstrap/Table';
 
 const alertsData = [
   {
@@ -24,26 +25,32 @@ function Dashboard() {
   return (
     <div>
       <h1>Alerts Monitoring</h1>
-      <div className="table-container">
-        <div className="table-header">
-          <div className="table-cell">Event Date</div>
-          <div className="table-cell">Source</div>
-          <div className="table-cell">Device ID</div>
-          <div className="table-cell">Location</div>
-          <div className="table-cell">GPS Coordinates</div>
-          <div className="table-cell">Activity Type</div>
-        </div>
+      <Table bordered hover >
+        <thead>
+          <tr>
+            <th>Event Date</th>
+            <th>Source</th>
+            <th>Device ID</th>
+            <th>Location</th>
+            <th>GPS Coordinates</th>
+            <th>Activity Type</th>
+          </tr>
+        </thead>
+        <tbody>
         {alertsData.map((alert, index) => (
-          <div className="table-row" key={index}>
-            <div className="table-cell">{alert.eventDate}</div>
-            <div className="table-cell">{alert.source}</div>
-            <div className="table-cell">{alert.deviceId}</div>
-            <div className="table-cell">{alert.location}</div>
-            <div className="table-cell">{alert.gpsCoordinates}</div>
-            <div className="table-cell">{alert.activityType}</div>
-          </div>
+          
+          <tr key={index}>
+            <td>{alert.eventDate}</td>
+            <td>{alert.source}</td>
+            <td>{alert.deviceId}</td>
+            <td>{alert.location}</td>
+            <td>{alert.gpsCoordinates}</td>
+            <td>{alert.activityType}</td>
+          </tr>
         ))}
-      </div>
+          </tbody>
+
+      </Table>
     </div>
   );
 }
