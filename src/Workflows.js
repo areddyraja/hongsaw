@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Table from 'react-bootstrap/Table';
 
 const workflowsData = [
   {
@@ -65,31 +66,36 @@ function Workflows() {
     <div>
       <h1>Workflows</h1>
 
-      <div className="table">
-        <div className="table-header">
-          <div className="table-header-cell">Workflow ID</div>
-          <div className="table-header-cell">Name</div>
-          <div className="table-header-cell">Description</div>
-          <div className="table-header-cell">Version</div>
-          <div className="table-header-cell">Status</div>
-          <div className="table-header-cell">Created On</div>
-          <div className="table-header-cell">Created By</div>
-          <div className="table-header-cell">Last Updated On</div>
-        </div>
+      <Table bordered hover >
+        <thead>
+          <tr>
+          <th>Workflow ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Version</th>
+          <th>Status</th>
+          <th>Created On</th>
+          <th>Created By</th>
+          <th>Last Updated On</th>
+          </tr>
+        </thead>
+        <tbody>
         {workflowsData.map((workflow, index) => (
-          <div className="table-row" key={index}>
-            <div className="table-cell">{workflow.workflowId}</div>
-            <div className="table-cell">{workflow.name}</div>
-            <div className="table-cell">{workflow.description}</div>
-            <div className="table-cell">{workflow.version}</div>
-            <div className="table-cell">{workflow.status}</div>
-            <div className="table-cell">{workflow.createdOn}</div>
-            <div className="table-cell">{workflow.createdBy}</div>
-            <div className="table-cell">{workflow.lastUpdatedOn}</div>
-          </div>
+           <tr key={index}>
+            <td>{workflow.workflowId}</td>
+            <td>{workflow.name}</td>
+            <td>{workflow.description}</td>
+            <td>{workflow.version}</td>
+            <td>{workflow.status}</td>
+            <td>{workflow.createdOn}</td>
+            <td>{workflow.createdBy}</td>
+            <td>{workflow.lastUpdatedOn}</td>
+          </tr>
         ))}
-      </div>
-    </div>
+     </tbody>
+
+</Table>
+</div>
   );
 }
 

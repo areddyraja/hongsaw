@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Dashboard from './Dashboard';
@@ -9,13 +10,20 @@ import Runtime from './Runtime';
 import Admin from './Admin';
 import About from './About';
 import Help from './Help';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 function App() {
   return (
     <BrowserRouter>
+     <Container fluid className="baseLayout">
+      <Row>
+    <Col>
       <div className="app">
         <header className="app-header">
-          <h1>Activity Monitoring</h1>
+          <div className="logo"><img src="activity.svg"/>Activity <span>Monitoring</span></div>
           <nav>
             <ul>
               <li><a href="/">Dashboard</a></li>
@@ -42,6 +50,9 @@ function App() {
           </Routes>
         </main>
       </div>
+      </Col>
+      </Row>
+      </Container>
     </BrowserRouter>
   );
 }

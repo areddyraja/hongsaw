@@ -1,4 +1,6 @@
 import React from 'react';
+import Table from 'react-bootstrap/Table';
+
 
 const runtimeData = [
   {
@@ -47,37 +49,43 @@ function Runtime() {
   return (
     <div>
       <h1>Runtimes</h1>
-      <div className="table">
-        <div className="table-header">
-          <div className="table-header-cell">Runtime ID</div>
-          <div className="table-header-cell">Status</div>
-          <div className="table-header-cell">Workflow ID</div>
-          <div className="table-header-cell">Workflow Name</div>
-          <div className="table-header-cell">Version</div>
-          <div className="table-header-cell">Start Time</div>
-          <div className="table-header-cell">Started By</div>
-          <div className="table-header-cell">Last Stopped On</div>
-          <div className="table-header-cell">Actions</div>
-        </div>
+     
+      <Table bordered hover >
+        <thead>
+          <tr>
+          <th>Runtime ID</th>
+          <th>Status</th>
+          <th>Workflow ID</th>
+          <th>Workflow Name</th>
+          <th>Version</th>
+          <th>Start Time</th>
+          <th>Started By</th>
+          <th>Last Stopped On</th>
+          <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
         {runtimeData.map((runtime, index) => (
-          <div className="table-row" key={index}>
-            <div className="table-cell">{runtime.runtimeId}</div>
-            <div className="table-cell">{runtime.status}</div>
-            <div className="table-cell">{runtime.workflowId}</div>
-            <div className="table-cell">{runtime.workflowName}</div>
-            <div className="table-cell">{runtime.version}</div>
-            <div className="table-cell">{runtime.startTime}</div>
-            <div className="table-cell">{runtime.startedBy}</div>
-            <div className="table-cell">{runtime.lastStoppedOn}</div>
-            <div className="table-cell">
+           <tr key={index}>
+            <td>{runtime.runtimeId}</td>
+            <td>{runtime.status}</td>
+            <td>{runtime.workflowId}</td>
+            <td>{runtime.workflowName}</td>
+            <td>{runtime.version}</td>
+            <td>{runtime.startTime}</td>
+            <td>{runtime.startedBy}</td>
+            <td>{runtime.lastStoppedOn}</td>
+            <td>
               <button className="action-button">Start</button>
               <button className="action-button">Stop</button>
               <button className="action-button">View Logs</button>
-            </div>
-          </div>
+            </td>
+            </tr>
         ))}
-      </div>
-    </div>
+       </tbody>
+
+</Table>
+</div>
   );
 }
 

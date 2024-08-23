@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Table from 'react-bootstrap/Table';
 const modelsData = [
   {
     modelId: '12345',
@@ -40,43 +40,48 @@ function Models() {
   return (
     <div>
       <h1>Models</h1>
-      <div className="table">
-        <div className="table-header">
-          <div className="table-header-cell">Model ID</div>
-          <div className="table-header-cell">Version</div>
-          <div className="table-header-cell">Name</div>
-          <div className="table-header-cell">Description</div>
-          <div className="table-header-cell">Status</div>
-          <div className="table-header-cell">Model Path</div>
-          <div className="table-header-cell">Size</div>
-          <div className="table-header-cell">Category</div>
-          <div className="table-header-cell">Model Type</div>
-          <div className="table-header-cell">Tags</div>
-          <div className="table-header-cell">Created By</div>
-          <div className="table-header-cell">Created On</div>
-          <div className="table-header-cell">Last Updated On</div>
-          <div className="table-header-cell">Updated By</div>
-        </div>
+      <Table bordered hover >
+        <thead>
+          <tr>
+          <th>Model ID</th>
+          <th>Version</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Model Path</th>
+          <th>Size</th>
+          <th>Category</th>
+          <th>Model Type</th>
+          <th>Tags</th>
+          <th>Created By</th>
+          <th>Created On</th>
+          <th>Last Updated On</th>
+          <th>Updated By</th>
+          </tr>
+        </thead>
+        <tbody>
         {modelsData.map((model, index) => (
-          <div className="table-row" key={index}>
-            <div className="table-cell">{model.modelId}</div>
-            <div className="table-cell">{model.version}</div>
-            <div className="table-cell">{model.name}</div>
-            <div className="table-cell">{model.description}</div>
-            <div className="table-cell">{model.status}</div>
-            <div className="table-cell">{model.modelPath}</div>
-            <div className="table-cell">{model.size}</div>
-            <div className="table-cell">{model.category}</div>
-            <div className="table-cell">{model.modelType}</div>
-            <div className="table-cell">{model.tags.join(', ')}</div>
-            <div className="table-cell">{model.createdBy}</div>
-            <div className="table-cell">{model.createdOn}</div>
-            <div className="table-cell">{model.lastUpdatedOn}</div>
-            <div className="table-cell">{model.updatedBy}</div>
-          </div>
+          <tr key={index}>
+            <td>{model.modelId}</td>
+            <td>{model.version}</td>
+            <td>{model.name}</td>
+            <td>{model.description}</td>
+            <td>{model.status}</td>
+            <td>{model.modelPath}</td>
+            <td>{model.size}</td>
+            <td>{model.category}</td>
+            <td>{model.modelType}</td>
+            <td>{model.tags.join(', ')}</td>
+            <td>{model.createdBy}</td>
+            <td>{model.createdOn}</td>
+            <td>{model.lastUpdatedOn}</td>
+            <td>{model.updatedBy}</td>
+            </tr>
         ))}
-      </div>
-    </div>
+      </tbody>
+
+</Table>
+</div>
   );
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Table from 'react-bootstrap/Table';
 const devicesData = [
   {
     deviceId: '12345',
@@ -32,35 +32,40 @@ function Devices() {
   return (
     <div>
       <h1>Devices</h1>
-      <div className="table">
-        <div className="table-header">
-          <div className="table-header-cell">Device ID</div>
-          <div className="table-header-cell">Name</div>
-          <div className="table-header-cell">Location</div>
-          <div className="table-header-cell">Location ID</div>
-          <div className="table-header-cell">Description</div>
-          <div className="table-header-cell">Status</div>
-          <div className="table-header-cell">Installed On</div>
-          <div className="table-header-cell">Last Updated</div>
-          <div className="table-header-cell">Last Event</div>
-          <div className="table-header-cell">Last Updated By</div>
-        </div>
+      <Table bordered hover >
+        <thead>
+          <tr>
+          <th>Device ID</th>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Location ID</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Installed On</th>
+          <th>Last Updated</th>
+          <th>Last Event</th>
+          <th>Last Updated By</th>
+        </tr>
+        </thead>
+        <tbody>
         {devicesData.map((device, index) => (
-          <div className="table-row" key={index}>
-            <div className="table-cell">{device.deviceId}</div>
-            <div className="table-cell">{device.name}</div>
-            <div className="table-cell">{device.location}</div>
-            <div className="table-cell">{device.locationId}</div>
-            <div className="table-cell">{device.description}</div>
-            <div className="table-cell">{device.status}</div>
-            <div className="table-cell">{device.installedOn}</div>
-            <div className="table-cell">{device.lastUpdated}</div>
-            <div className="table-cell">{device.lastEvent}</div>
-            <div className="table-cell">{device.lastUpdatedBy}</div>
-          </div>
+          <tr key={index}>
+            <td>{device.deviceId}</td>
+            <td>{device.name}</td>
+            <td>{device.location}</td>
+            <td>{device.locationId}</td>
+            <td>{device.description}</td>
+            <td>{device.status}</td>
+            <td>{device.installedOn}</td>
+            <td>{device.lastUpdated}</td>
+            <td>{device.lastEvent}</td>
+            <td>{device.lastUpdatedBy}</td>
+          </tr>
         ))}
-      </div>
-    </div>
+      </tbody>
+
+</Table>
+</div>
   );
 }
 
