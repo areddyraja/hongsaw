@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 const devicesData = [
   {
     deviceId: '12345',
-    name: 'Device 1',
+    name: 'Work Area 1',
     location: 'New York',
     locationId: 'NY001',
     description: 'This is device 1',
@@ -15,7 +15,7 @@ const devicesData = [
   },
   {
     deviceId: '67890',
-    name: 'Device 2',
+    name: 'Parking Cameras',
     location: 'Los Angeles',
     locationId: 'LA002',
     description: 'This is device 2',

@@ -4,7 +4,7 @@ const modelsData = [
   {
     modelId: '12345',
     version: '1.0',
-    name: 'Model 1',
+    name: 'Helmet Model',
     description: 'This is model 1',
     status: 'Active',
     modelPath: '/path/to/model1',
@@ -20,7 +20,7 @@ const modelsData = [
   {
     modelId: '67890',
     version: '2.0',
-    name: 'Model 2',
+    name: 'Parking Nodel',
     description: 'This is model 2',
     status: 'Inactive',
     modelPath: '/path/to/model2',

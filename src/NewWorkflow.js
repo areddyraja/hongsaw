@@ -2,20 +2,18 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 const modelsData = [
-  { modelId: '1', name: 'Yolo' },
-  { modelId: '2', name: 'Dicom' }
+  { modelId: '1', name: 'Helmet Model' },
+  { modelId: '2', name: 'Parking Model' }
 ];
 const devicesData = [
-  { deviceId: '1', name: 'Device 1' },
-  { deviceId: '2', name: 'Device 2' }
+  { deviceId: '1', name: 'Factory Floor' },
+  { deviceId: '2', name: 'Parking Camera' }
 ];
 const businessRules = [
   { id: '1', name: 'Rule 1' },
   { id: '2', name: 'Rule 2' },
   { id: '3', name: 'Rule 3' }
 ];
-
-
 
 function NewWorkflow() {
 
