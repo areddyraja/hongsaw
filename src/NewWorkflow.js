@@ -19,104 +19,116 @@ const businessRules = [
 
 function NewWorkflow() {
 
-    const handleSave = () => {
-       alert("saved");
-      };
+  const handleSave = () => {
+    alert("saved");
+  };
 
-    // const handleSave = () => {
-    //     axios.post('https://dummy-url.com/workflows', {
-    //       name,
-    //       description
-    //     })
-    //       .then(response => {
-    //         console.log(response.data);
-    //       })
-    //       .catch(error => {
-    //         console.error(error);
-    //       });
-    //   };
-    
-      const handleCancel = () => {
-        alert("Cancelled");
-    };
+  // const handleSave = () => {
+  //     axios.post('https://dummy-url.com/workflows', {
+  //       name,
+  //       description
+  //     })
+  //       .then(response => {
+  //         console.log(response.data);
+  //       })
+  //       .catch(error => {
+  //         console.error(error);
+  //       });
+  //   };
 
-      
+  const handleCancel = () => {
+    alert("Cancelled");
+  };
+
+
 
   return (
     <div>
-      <h1>New Workflow</h1>
+      <div className='container'>
+        <h1>New Workflow</h1>
+      </div>
+
       <form style={{ textAlign: 'left' }}>
-
-        <label>
-          Name:
-          <input type="text" />
-        </label>
-        <br />
-
-        <label>
-          Description:
-          <textarea />
-        </label>
-        <br />
-
-        <label>
-          Model:
-          <select>
-            {modelsData.map((model) => (
-              <option value={model.modelId}>{model.name}</option>
-            ))}
-          </select>
-        </label>
-        <br />
-        <label>
-          Model Path:
-          <input type="text" />
-        </label>
-        <br />
-        <label>
-          Model Version:
-          <input type="text" />
-        </label>
-        <br />
-        <label>
-          Device:
-          <select>
-            {devicesData.map((device) => (
-              <option value={device.deviceId}>{device.name}</option>
-            ))}
-          </select>
-        </label>
-        <br />
-        <label>
-          Business Rules:
-          {businessRules.map((rule) => (
-            <div>
-              <input type="checkbox" />
-              <span>{rule.name}</span>
+        <div className='container create-form'>
+          <div className='row'>
+            <div className='col-3'>
+              <div>Name</div>
+              <input type="text" class="form-control" />
             </div>
-          ))}
-        </label>
-        <br />
 
-        <button onClick={handleCancel} style={{ marginLeft: '10px' }}>
-          Cancel
-        </button>
+            <div className='col-3'>
+              <div>Description</div>
+              <textarea class="form-control" />
+            </div>
+            <div className='col-3'>
+              <div>Model</div>
+              <select class="form-select">
+                {modelsData.map((model) => (
+                  <option value={model.modelId}>{model.name}</option>
+                ))}
+              </select>
+            </div>
 
-        <button
-            onClick={handleSave}
-          style={{
-            backgroundColor: '#4CAF50',
-            color: '#fff',
-            padding: '10px 20px',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer'
-          }}
-        >
-          Save
-        </button>
-       
-        
+            <div className='col-3'>
+              <div>Model Path</div>
+              <input type="text" class="form-control" />
+            </div>
+
+            <div className='col-3'>
+              <div>Model Version</div>
+              <input type="text" class="form-control" />
+            </div>
+
+
+            <div className='col-3'>
+              <div>Device</div>
+              <select class="form-select">
+                {devicesData.map((device) => (
+                  <option value={device.deviceId}>{device.name}</option>
+                ))}
+              </select>
+            </div>
+
+
+            <div className='col-3'>
+              <div>Business Rules</div>
+              <div className='d-flex gap-3'>
+                {businessRules.map((rule) => (
+                  <div className='d-flex gap-2'>
+                    <input type="checkbox" />
+                    <span>{rule.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className='row'>
+                  <hr/>
+            </div>
+
+            <div className='row'>
+              <div className='d-flex justify-content-end gap-3'>
+                <button onClick={handleCancel} type="button" class="btn btn-light" >
+                  Cancel
+                </button>
+
+                <button type="button" class="btn btn-dark"
+                  onClick={handleSave}
+
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+
+
+
+
       </form>
     </div>
   );
