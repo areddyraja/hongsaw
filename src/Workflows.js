@@ -78,10 +78,11 @@ function Workflows() {
 
   return (
     <div>
+      <div className='d-flex align-items-center justify-content-between mb-3 head-set'>
       <h1>Workflows</h1>
-      <button onClick={handleNewWorkflow}>New Workflow</button>
+      <button onClick={handleNewWorkflow} type="button" class="btn btn-dark">New Workflow</button>
 
-
+      </div>
 
 
       <Table bordered hover >
