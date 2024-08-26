@@ -140,8 +140,8 @@ table {
   font-weight: bold;
 }
 
-.table-hover>tbody>tr:hover>*{
-  background-color: #5d5d5d!important;
+div .table-hover>tbody>tr:hover>*{
+  background-color: #fff!important;
 }
 
 .head-set h1{
