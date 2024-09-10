@@ -11,6 +11,7 @@ import Admin from './Admin';
 import About from './About';
 import Help from './Help';
 import NewWorkflow from './NewWorkflow';
+import Login from './Login';
 
 
 import Container from 'react-bootstrap/Container';
@@ -51,6 +52,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/help" element={<Help />} />
             <Route path="/new-workflow" element={<NewWorkflow />} />
+            <Route path="/login" element={<Login />} />
 
           </Routes>
         </main>
