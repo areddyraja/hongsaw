@@ -166,61 +166,35 @@ div .table-hover>tbody>tr:hover>*{
 }
 
 
-.login-bg {
-  /* background-image: url("./assets/login-bg.jpg"); */
-  height: 100vh;
-   /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 200s ease infinite; */
-  /* background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);   */
-  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-}
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+
+
+.login-bg {
+  background-image: url("./assets/login-bg.jpg"); 
+  height: 100vh
 }
- 
 
 .login-section {
   border-radius: 9px;
-  border: 1px solid #ebebeb;
-    background: #f6f6f6;
+  border: 1px #000;
+  background: rgba(23, 23, 23, 0.90);
   color: #fff;
-  width: 400px!important;
-  padding: 50px 0;
+  width: 420px!important;
+  padding: 50px;
   position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-color:#333
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.login-section #login{
-  margin: 0 20px;
-}
-
-.vld-parent{
-  display: flex;
-  flex-direction: column;
-  row-gap: 30px;
-}
 .login-section label{
   text-align: left;
   display: block;
-  color: #333;
-  margin-bottom: 10px;
+  color: #C9C9C9;
 }
 .login-section input{
-  background-color: #fff;
-  border-color: #ccc;
+  background-color: #121212;
+  border-color: #6E5EEA;
 
 }
 
@@ -237,10 +211,10 @@ color:#333
 }
 
 .login-lable{
-  color: #333;
+  color: #C9C9C9;
   font-size: 18px;
   font-weight: bold;
-  /* margin-bottom: 30px; */
+  margin-bottom: 30px;
 }
 
 .login-section button{
@@ -252,36 +226,18 @@ color:#333
 }
 
 .login-bg .album{
-  height: calc(100vh - 140px);
+  height: 100vh;
   overflow: auto;
 }
 
-.login-img{
-  height: 100vh!important;
-  width: 100%;
-}
 
-.nopadding {
-  padding: 0 !important;
-  margin: 0 !important;
-  position: relative;
-}
-
-.login-lable .logo {
+.vld-parent{
   display: flex;
-  grid-gap: 7px;
-  gap: 7px;
-  color: #ab74f7;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
+  flex-direction: column;
+  row-gap: 20px;
+  padding: 0 20px;
 }
 
-.login-lable .logo img{
-  margin-bottom: 0;
-}
-
-.login-lable .logo div{
-  font-weight: 100;
-  color: #333;
+.vld-parent label{
+margin-bottom: 10px;
 }
