@@ -2,7 +2,9 @@
 
 
 
-
+body{
+  background-color: #040508!important;
+}
 
 .App {
   text-align: center;

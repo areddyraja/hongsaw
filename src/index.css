@@ -4,7 +4,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #ADD8E6; /* Light blue background */
+  background-color: #040508!important;
   font-family: "Poppins", sans-serif;
 }
 
@@ -18,6 +18,7 @@ html, body{
 
 .app-header {
   background-color: #0D111A;
+  background-image: url(assets/header-bg.png);
   color: #fff;
   padding: 1em;
   display: flex;
@@ -157,6 +158,16 @@ div .table-hover>tbody>tr:hover>*{
   margin-bottom: 20px;
 }
 
+.create-form .row div{
+  color: #9b9b9b;
+}
+.create-form .form-control, .create-form .form-select{
+  border: 1px solid #2E4480;
+}
+.create-form .form-control, .create-form .form-control:focus, .create-form .form-select{
+background-color: #10182D;
+color: #fff;
+}
 .login-page{
   width: 100%;
 }
@@ -240,4 +251,49 @@ div .table-hover>tbody>tr:hover>*{
 
 .vld-parent label{
 margin-bottom: 10px;
+}
+.table, .table thead tr{
+  border: 0px;
+}
+.table thead tr th{
+  background-color: #181E2F;
+  color: #fff;
+  border: 0px;
+}
+.table tr:nth-child(odd) td{
+  background-color: #040508;
+  color: #FFF;
+  border-bottom: 1px solid #181E2F;
+}
+.table tr:nth-child(even) td{
+  background-color: #070A12;
+  color: #FFF;
+  border-bottom: 1px solid #181E2F;
+}
+.table tbody{
+  border: 0px;
+}
+div .table-hover>tbody>tr:hover>*{
+  background-color:#10182D!important;
+}
+
+button.btn-dark{
+  background-color: #357fb8;
+  border: 1px solid #1c377c;
+}
+button.btn-dark:hover{
+  background-color: #1c377c;
+  border: 1px solid #181E2F;
+}
+
+button.btn-light{
+  background-color: #040508;
+  border: 1px solid #1c377c;
+  color: #fff;
+}
+
+button.btn-light:hover{
+  background-color: #040508;
+  border: 1px solid #357fb8;
+  color: #fff;
 }
