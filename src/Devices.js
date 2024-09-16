@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Image, Toast } from "react-bootstrap";
+import {
+  Table,
+  Button,
+  Modal,
+  Form,
+  Image,
+  Toast,
+  ToastContainer,
+} from "react-bootstrap";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 function Devices({ userId }) {
   const [devicesData, setDevicesData] = useState([]);
@@ -17,8 +26,7 @@ function Devices({ userId }) {
     location: "",
     id: "",
   });
-  const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState("");
+  const [toasts, setToasts] = useState([]);
 
   useEffect(() => {
     fetchDevices();
@@ -50,27 +58,47 @@ function Devices({ userId }) {
   const handleShowStreamModal = async (id, ip, location) => {
     try {
       const formData = new FormData();
-      formData.append('device_id', id);
+      formData.append("device_id", id);
 
-      const response = await fetch('/start_stream', {
-        method: 'POST',
+      const response = await fetch("/start_stream", {
+        method: "POST",
         body: formData,
       });
 
       if (!response.ok) {
-        throw new Error('Failed to start stream');
+        throw new Error("Failed to start stream");
       }
 
       setStreamingDevice({ device_ip: ip, location, id });
       setShowStreamModal(true);
+      addToast("Stream started successfully", "success");
     } catch (error) {
-      console.error('Error starting stream:', error);
-      setToastMessage('Failed to start stream. Please try again.');
-      setShowToast(true);
+      console.error("Error starting stream:", error);
+      addToast("Failed to start stream. Please try again.", "danger");
     }
   };
 
-  const handleCloseShowStreamModal = () => setShowStreamModal(false);
+  const handleCloseShowStreamModal = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("device_id", streamingDevice.id);
+
+      const response = await fetch("/stop_stream", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to stop stream");
+      }
+
+      setShowStreamModal(false);
+      addToast("Stream stopped successfully", "success");
+    } catch (error) {
+      console.error("Error stopping stream:", error);
+      addToast("Failed to stop stream. Please try again.", "danger");
+    }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -96,11 +124,24 @@ function Devices({ userId }) {
 
       handleCloseModal();
       await fetchDevices();
+      addToast("Device created successfully", "success");
     } catch (error) {
       console.error("Error creating device:", error);
-      setToastMessage('Failed to create device. Please try again.');
-      setShowToast(true);
+      addToast("Failed to create device. Please try again.", "danger");
     }
+  };
+
+  const addToast = (message, variant) => {
+    const newToast = {
+      id: Date.now(),
+      message,
+      variant,
+    };
+    setToasts((prevToasts) => [...prevToasts, newToast]);
+  };
+
+  const removeToast = (id) => {
+    setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
   };
 
   if (loading) return <div>Loading...</div>;
@@ -197,54 +238,93 @@ function Devices({ userId }) {
         </Modal.Body>
       </Modal>
 
-      <Modal 
-        show={showStreamModal} 
+      <Modal
+        show={showStreamModal}
         onHide={handleCloseShowStreamModal}
-        size="lg" // Increase the size of the modal
+        size="xl" // Make the modal extra large
+        centered // Center the modal vertically
       >
         <Modal.Header closeButton>
           <Modal.Title>
             Video Stream For Device: {streamingDevice.id}
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body className="p-0"> {/* Remove padding from Modal.Body */}
-          <div style={{
-            width: '100%',
-            height: '0',
-            paddingBottom: '56.25%', // 16:9 aspect ratio
-            position: 'relative',
-            overflow: 'hidden',
-          }}>
-            <Image 
-              src="/video_feed" 
+        <Modal.Body className="p-0">
+          <div
+            style={{
+              width: "100%",
+              height: "0",
+              paddingBottom: "75%", // 4:3 aspect ratio for larger display
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            <Image
+              src="/video_feed"
               alt="Camera Feed"
               style={{
-                position: 'absolute',
-                top: '0',
-                left: '0',
-                width: '100%',
-                height: '100%',
-                objectFit: 'contain',
+                position: "absolute",
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
               }}
             />
           </div>
         </Modal.Body>
       </Modal>
 
-      <Toast
-        show={showToast}
-        onClose={() => setShowToast(false)}
-        bg='success'
-        delay={3000}
-        autohide
+      <ToastContainer
+        className="p-3"
+        position="bottom-end"
         style={{
-          position: 'absolute',
-          top: 20,
+          position: "fixed",
+          bottom: 20,
           right: 20,
+          zIndex: 1000,
         }}
       >
-        <Toast.Body>{toastMessage}</Toast.Body>
-      </Toast>
+        <TransitionGroup>
+          {toasts.map((toast) => (
+            <CSSTransition
+              key={toast.id}
+              timeout={300}
+              classNames="toast-animation"
+            >
+              <Toast
+                onClose={() => removeToast(toast.id)}
+                show={true}
+                delay={3000}
+                autohide
+                bg={toast.variant}
+                className="mb-3"
+              >
+                <Toast.Body>{toast.message}</Toast.Body>
+              </Toast>
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
+      </ToastContainer>
+
+      <style jsx>{`
+        .toast-animation-enter {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        .toast-animation-enter-active {
+          opacity: 1;
+          transform: translateY(0);
+          transition: opacity 300ms, transform 300ms;
+        }
+        .toast-animation-exit {
+          opacity: 1;
+        }
+        .toast-animation-exit-active {
+          opacity: 0;
+          transition: opacity 300ms;
+        }
+      `}</style>
     </div>
   );
 }
