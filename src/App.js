@@ -82,7 +82,7 @@ function AppContent() {
                 <Route path="/devices" element={<ProtectedRoute isLoggedIn={isLoggedIn} onLogout={handleLogout}><Devices userId={1} /></ProtectedRoute>} />
                 <Route path="/models" element={<ProtectedRoute isLoggedIn={isLoggedIn} onLogout={handleLogout}><Models /></ProtectedRoute>} />
                 <Route path="/workflows" element={<ProtectedRoute isLoggedIn={isLoggedIn} onLogout={handleLogout}><Workflows /></ProtectedRoute>} />
-                <Route path="/runtime" element={<ProtectedRoute isLoggedIn={isLoggedIn} onLogout={handleLogout}><Runtime /></ProtectedRoute>} />
+                <Route path="/runtime" element={<ProtectedRoute isLoggedIn={isLoggedIn} onLogout={handleLogout}><Runtime userId={1}/></ProtectedRoute>} />
                 <Route path="/admin" element={<ProtectedRoute isLoggedIn={isLoggedIn} onLogout={handleLogout}><Admin /></ProtectedRoute>} />
                 <Route path="/about" element={<ProtectedRoute isLoggedIn={isLoggedIn} onLogout={handleLogout}><About /></ProtectedRoute>} />
                 <Route path="/help" element={<ProtectedRoute isLoggedIn={isLoggedIn} onLogout={handleLogout}><Help /></ProtectedRoute>} />
